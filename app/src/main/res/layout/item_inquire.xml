@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="7dp"
+    android:paddingBottom="20dp">
+
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/inquire_iv"
+        android:layout_marginLeft="16dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/inquire_iv"
+        android:textSize="17dp"
+        android:textColor="#000"
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:id="@+id/tv_inquire_a" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_inquire_c"
+        android:layout_below="@+id/tv_inquire_b"
+        android:layout_alignLeft="@+id/tv_inquire_b"
+        android:layout_alignStart="@+id/tv_inquire_b"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:textSize="14dp"
+        android:maxLines="2"
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_inquire_b"
+        android:layout_below="@+id/inquire_iv"
+        android:layout_alignLeft="@+id/tv_inquire_a"
+        android:layout_alignStart="@+id/tv_inquire_a" />
+
+
+</RelativeLayout>
