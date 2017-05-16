@@ -7,6 +7,7 @@ import com.example.administrator.os_china.base.BaseFragment;
 
 /**
  * Created by Administrator on 2017/5/14 0014.
+ * 动弹Fragment
  */
 
 public class Trends_fragment extends BaseFragment{

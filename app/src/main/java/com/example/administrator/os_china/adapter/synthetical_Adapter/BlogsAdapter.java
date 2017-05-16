@@ -1,4 +1,4 @@
-package com.example.administrator.os_china.adapter;
+package com.example.administrator.os_china.adapter.synthetical_Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.model.entity.Blogs_beans;
-import com.example.administrator.os_china.model.entity.Bolgs_Zuixin_Beans;
 
 import java.util.List;
 
@@ -17,12 +16,12 @@ import java.util.List;
  * Created by Administrator on 2017/5/15 0015.
  */
 
-public class Bolgs_MeiriAdapter extends BaseAdapter {
+public class BlogsAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Bolgs_Zuixin_Beans.BlogBean> list;
+    private List<Blogs_beans.BlogBean> list;
 
-    public Bolgs_MeiriAdapter(Context context, List<Bolgs_Zuixin_Beans.BlogBean> list) {
+    public BlogsAdapter(Context context, List<Blogs_beans.BlogBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -48,26 +47,26 @@ public class Bolgs_MeiriAdapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView == null){
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_exercise , null);
-            holder.tv_exercise_a = (TextView) convertView.findViewById(R.id.tv_exercise_a);
-            holder.tv_exercise_b = (TextView) convertView.findViewById(R.id.tv_exercise_b);
-            holder.tv_exercise_c = (TextView) convertView.findViewById(R.id.tv_exercise_c);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_blogs , null);
+            holder.tv_blogs_a = (TextView) convertView.findViewById(R.id.tv_blogs_a);
+            holder.tv_blogs_b = (TextView) convertView.findViewById(R.id.tv_blogs_b);
+            holder.tv_blogs_c = (TextView) convertView.findViewById(R.id.tv_blogs_c);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        Bolgs_Zuixin_Beans.BlogBean beans = list.get(position);
+        Blogs_beans.BlogBean blogBean = list.get(position);
 
-        holder.tv_exercise_a.setText(beans.getTitle());
-        holder.tv_exercise_b.setText(beans.getBody());
-        holder.tv_exercise_c.setText("@"+beans.getAuthorname());
+        holder.tv_blogs_a.setText(blogBean.getTitle());
+        holder.tv_blogs_b.setText(blogBean.getBody());
+        holder.tv_blogs_c.setText("@"+blogBean.getAuthorname());
 
         return convertView;
     }
 
     class ViewHolder{
-        private TextView tv_exercise_a;
-        private TextView tv_exercise_b;
-        private TextView tv_exercise_c;
+        private TextView tv_blogs_a;
+        private TextView tv_blogs_b;
+        private TextView tv_blogs_c;
     }
 }

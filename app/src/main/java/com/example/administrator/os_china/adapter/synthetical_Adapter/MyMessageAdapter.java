@@ -1,4 +1,4 @@
-package com.example.administrator.os_china.adapter;
+package com.example.administrator.os_china.adapter.synthetical_Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

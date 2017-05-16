@@ -1,16 +1,20 @@
 package com.example.administrator.os_china.fragment.Synthetical_fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.adapter.MyMessageAdapter;
+import com.example.administrator.os_china.activity.NewsList_Activity;
+import com.example.administrator.os_china.adapter.synthetical_Adapter.MyMessageAdapter;
 import com.example.administrator.os_china.base.BaseFragment;
 import com.example.administrator.os_china.model.entity.Beans;
 import com.example.administrator.os_china.model.http.biz.message.INewsModel;
@@ -147,7 +151,16 @@ public class Message_Fragment extends BaseFragment {
 
     @Override
     public void initListener() {
-
+        syntheticalListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String str = list.get(position).getId();
+                Log.e("TTT","传过去的数据:"+str);
+                Intent intent = new Intent(getActivity() , NewsList_Activity.class);
+                intent.putExtra("id" , str);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

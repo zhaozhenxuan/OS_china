@@ -5,7 +5,7 @@ package com.example.administrator.os_china.utils;
  */
 
 public class Urls {
-    //总接口
+    //s总接口
     public static final String BASEUSER = "http://www.oschina.net/";
     //资讯
     public static final String ZIXUN = BASEUSER + "action/api/news_list";

@@ -16,4 +16,6 @@ public interface INewsModel {
 
     void ZuixinList(String pageIndex , MyCallBack myCallBack);
 
+    void Newslist_Xiangqing(String Id , MyCallBack myCallBack);
+
 }

@@ -30,6 +30,7 @@ import static com.example.administrator.os_china.R.id.synthetical_tab;
 
 /**
  * Created by Administrator on 2017/5/14 0014.
+ * 综合Fragment
  */
 
 public class Synthetical_fragment extends BaseFragment {

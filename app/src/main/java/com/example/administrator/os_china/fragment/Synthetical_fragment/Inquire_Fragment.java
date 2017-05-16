@@ -2,18 +2,15 @@ package com.example.administrator.os_china.fragment.Synthetical_fragment;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.adapter.AnswersAdapter;
-import com.example.administrator.os_china.adapter.MyMessageAdapter;
+import com.example.administrator.os_china.adapter.synthetical_Adapter.AnswersAdapter;
 import com.example.administrator.os_china.base.BaseFragment;
 import com.example.administrator.os_china.model.entity.Answers_beans;
-import com.example.administrator.os_china.model.entity.Beans;
 import com.example.administrator.os_china.model.http.biz.message.INewsModel;
 import com.example.administrator.os_china.model.http.biz.message.NewsMineImpl;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
@@ -32,8 +29,6 @@ import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
-
-import static com.example.administrator.os_china.R.id.framelayut;
 
 /**
  * Created by Administrator on 2017/5/9 0009.
