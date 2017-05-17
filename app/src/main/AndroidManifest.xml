@@ -18,7 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HomeActivity"></activity>
-        <activity android:name=".activity.NewsList_Activity"></activity>
+        <activity android:name=".activity.Message_Xiangqing__Activity"></activity>
+        <activity android:name=".activity.Blogs_Xiangqing_Activity"></activity>
+        <activity android:name=".activity.Exercise_Xiangqing_Activity"></activity>
+        <activity android:name=".activity.Wenda_Xiangqing_Activity"></activity>
     </application>
 
 </manifest>

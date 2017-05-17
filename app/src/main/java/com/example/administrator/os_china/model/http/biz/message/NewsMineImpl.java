@@ -35,13 +35,13 @@ public class NewsMineImpl implements INewsModel {
      * @param myCallBack 博客请求的业务类
      */
     @Override
-    public void BlogsList(String pageIndex, MyCallBack myCallBack) {
+    public void Blogs_Tuijian_List(String pageIndex, MyCallBack myCallBack) {
         Map<String, String> params = new HashMap<>();
-        params.put("type", "latest");
+        params.put("type", "recommend");
         params.put("pageIndex", pageIndex);
         params.put("pageSize", "20");
 
-        HttpFactory.onCreate().doGet(Urls.BOKE, params, myCallBack);
+        HttpFactory.onCreate().doGet(Urls.TUIJIAN, params, myCallBack);
     }
 
     /**
@@ -80,5 +80,32 @@ public class NewsMineImpl implements INewsModel {
 
         HttpFactory.onCreate().doGet(Urls.XINWEN, params, myCallBack);
         Log.i("tag", Urls.XINWEN);
+    }
+
+    @Override
+    public void Blogs_Xiangqing(String Id, MyCallBack myCallBack) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", Id);
+
+        HttpFactory.onCreate().doGet(Urls.BOKEXIANGQING, params, myCallBack);
+        Log.i("tag", Urls.BOKEXIANGQING);
+    }
+
+    @Override
+    public void Exercise_Xiangqing(String Id, MyCallBack myCallBack) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", Id);
+
+        HttpFactory.onCreate().doGet(Urls.BOKEXIANGQING, params, myCallBack);
+        Log.i("tag", Urls.BOKEXIANGQING);
+    }
+
+    @Override
+    public void Wenda__Xiangqing(String Id, MyCallBack myCallBack) {
+        Map<String, String> params = new HashMap<>();
+        params.put("id", Id);
+
+        HttpFactory.onCreate().doGet(Urls.WENDAXIANGQING, params, myCallBack);
+        Log.i("tag", Urls.WENDAXIANGQING);
     }
 }

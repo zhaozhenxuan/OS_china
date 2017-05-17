@@ -3,78 +3,75 @@ package com.example.administrator.os_china.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
-import com.example.administrator.os_china.model.entity.Answers_beans;
-import com.example.administrator.os_china.model.entity.Newslist_Xiangqing_Beans;
+import com.example.administrator.os_china.model.entity.Wenda_Xiangqing_Beans;
 import com.example.administrator.os_china.model.http.biz.message.INewsModel;
 import com.example.administrator.os_china.model.http.biz.message.NewsMineImpl;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
-import com.example.administrator.os_china.utils.Urls;
 import com.thoughtworks.xstream.XStream;
-
-import java.net.URL;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.R.id.list;
-
 /**
- * Created by Administrator on 2017/5/16 0016.
+ * Created by Administrator on 2017/5/17 0017.
  */
 
-public class NewsList_Activity extends BaseActivity {
-    @BindView(R.id.newslist_web_view)
-    WebView newslistWebView;
+public class Wenda_Xiangqing_Activity extends BaseActivity {
+    @BindView(R.id.wenda_img_btn_xiangqing)
+    ImageView wendaImgBtnXiangqing;
+    @BindView(R.id.wenda_xiangqing_tv)
+    TextView wendaXiangqingTv;
     private String Id;
     private INewsModel iNewsModel;
     private String rurl;
-    private String URL;
+
+    @BindView(R.id.wenda_web_view)
+    WebView wendaWebView;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.newslist_item;
+        return R.layout.wenda_xiangqing_item;
     }
 
     @Override
     protected void initData() {
         iNewsModel = new NewsMineImpl();
-
     }
 
     @Override
     protected void initView() {
-        Intent intent = getIntent();
-        Id = intent.getStringExtra("id");
-        Log.i("tag", "接受ID" + Id);
+
     }
 
     @Override
     protected void loderData() {
-
-
-        iNewsModel.Newslist_Xiangqing(Id, new MyCallBack() {
+        Intent intent = getIntent();
+        Id = intent.getStringExtra("id");
+        wendaXiangqingTv.setText(intent.getStringExtra("text"));
+        Log.i("tag", "接受ID:" + Id);
+        iNewsModel.Wenda__Xiangqing(Id, new MyCallBack() {
             @Override
             public void onSuccess(String result) {
 
                 Log.e("bbb", "获取到的数据：" + result);
                 XStream xStream = new XStream();
-                xStream.alias("oschina", Newslist_Xiangqing_Beans.class);
-                xStream.alias("relative", Newslist_Xiangqing_Beans.NewsBean.RelativeBean.class);
+                xStream.alias("oschina", Wenda_Xiangqing_Beans.class);
 
-                Newslist_Xiangqing_Beans beans = (Newslist_Xiangqing_Beans) xStream.fromXML(result);
+                Wenda_Xiangqing_Beans beans = (Wenda_Xiangqing_Beans) xStream.fromXML(result);
 
-                rurl = beans.getNews().getUrl();
+                rurl = beans.getPost().getUrl();
 
+                wendaWebView.loadUrl(rurl);
 
-                newslistWebView.loadUrl(rurl);
-                //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
-                newslistWebView.setWebViewClient(new WebViewClient() {
+                wendaWebView.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
                         // TODO Auto-generated method stub
@@ -84,6 +81,7 @@ public class NewsList_Activity extends BaseActivity {
                     }
                 });
 
+
             }
 
             @Override
@@ -92,12 +90,16 @@ public class NewsList_Activity extends BaseActivity {
             }
         });
 
-
     }
 
     @Override
     protected void initListener() {
-
+        wendaImgBtnXiangqing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override

@@ -44,4 +44,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //初始化监听方法
     protected abstract void initListener();
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

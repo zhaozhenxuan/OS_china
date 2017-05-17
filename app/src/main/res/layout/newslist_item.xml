@@ -9,7 +9,25 @@
         android:layout_height="50dp"
         android:background="#24CF5F">
 
+        <ImageView
+
+            android:id="@+id/img_btn_xiangqing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"/>
+
+        <TextView
+            android:id="@+id/xiangqing_tv"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:layout_marginLeft="44dp"
+            android:gravity="fill_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题"/>
+
     </android.support.v7.widget.Toolbar>
+
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

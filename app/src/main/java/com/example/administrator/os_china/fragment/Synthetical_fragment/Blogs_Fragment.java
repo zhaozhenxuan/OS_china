@@ -1,12 +1,17 @@
 package com.example.administrator.os_china.fragment.Synthetical_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.administrator.os_china.R;
+import com.example.administrator.os_china.activity.Blogs_Xiangqing_Activity;
+import com.example.administrator.os_china.activity.Message_Xiangqing__Activity;
 import com.example.administrator.os_china.adapter.synthetical_Adapter.BlogsAdapter;
 import com.example.administrator.os_china.base.BaseFragment;
 import com.example.administrator.os_china.model.entity.Blogs_beans;
@@ -31,6 +36,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * Created by Administrator on 2017/5/14 0014.
+ * 推荐博客Fragment
  */
 
 public class Blogs_Fragment extends BaseFragment {
@@ -116,13 +122,24 @@ public class Blogs_Fragment extends BaseFragment {
 
     @Override
     public void initListener() {
+        blogsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String str = list.get(position ).getId();
+                Log.e("TTT","传过去的数据:"+str);
+                Intent intent = new Intent(getActivity() , Blogs_Xiangqing_Activity.class);
+                intent.putExtra("id" , str);
+                intent.putExtra("text" , "博客详情");
+                startActivity(intent);
+            }
+        });
 
     }
 
     @Override
     public void loderData() {
         st = page + "";
-        iNewsModel.BlogsList(st, new MyCallBack() {
+        iNewsModel.Blogs_Tuijian_List(st, new MyCallBack() {
             @Override
             public void onSuccess(String result) {
                 XStream xStream = new XStream();

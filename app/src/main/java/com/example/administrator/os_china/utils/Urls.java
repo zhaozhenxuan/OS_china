@@ -14,6 +14,7 @@ public class Urls {
     //热点
     public static final String REDIAN = BASEUSER + "action/api/news_list";
     //博客
+
     public static final String BOKE = BASEUSER + "action/api/blog_list";
     //博客详情
     public static final String BOKEXIANGQING = BASEUSER + "action/api/blog_detail";
@@ -30,6 +31,10 @@ public class Urls {
 
     //提问
     public static final String TIWEN = JISHUBASEURL + "action/api/post_list";
+
+    //问答详情
+    public static final String WENDAXIANGQING = JISHUBASEURL + "action/api/post_detail";
+
 
     /**
      * 博客区

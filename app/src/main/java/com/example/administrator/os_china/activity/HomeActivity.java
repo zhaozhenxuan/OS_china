@@ -1,6 +1,8 @@
 package com.example.administrator.os_china.activity;
 
 import android.os.Bundle;
+import android.os.Process;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -10,6 +12,7 @@ import android.widget.RadioGroup;
 
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
+import com.example.administrator.os_china.base.BaseFragment;
 import com.example.administrator.os_china.fragment.home_fragment.Find_fragment;
 import com.example.administrator.os_china.fragment.home_fragment.My_fragment;
 import com.example.administrator.os_china.fragment.home_fragment.Synthetical_fragment;
@@ -88,6 +91,28 @@ public class HomeActivity extends BaseActivity {
             case R.id.MineBtn:
                 FragmentBuilder.getInstance().start(My_fragment.class);
                 break;
+        }
+    }
+
+    /**
+     * 捕获back键 当back键被按下时
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentManager.BackStackEntry entry = manager.getBackStackEntryAt(manager.getBackStackEntryCount() - 1);
+        String name = entry.getName();
+        if ("Synthetical_fragment".equals(name) || "Fragment_tweet".equals(name)
+                || "find_fragment".equals(name) || "my_fragment".equals(name)) {
+            Process.killProcess(Process.myPid());
+            System.exit(0);
+        } else {
+            manager.popBackStackImmediate();
+            String fragmentName = manager.getBackStackEntryAt(manager.getBackStackEntryCount() - 1).getName();
+            BaseFragment fragment = (BaseFragment) manager.findFragmentByTag(fragmentName);
+            FragmentBuilder.getInstance().setLastFragment(fragment);
         }
     }
 }

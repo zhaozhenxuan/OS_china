@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.activity.NewsList_Activity;
+import com.example.administrator.os_china.activity.Message_Xiangqing__Activity;
 import com.example.administrator.os_china.adapter.synthetical_Adapter.MyMessageAdapter;
 import com.example.administrator.os_china.base.BaseFragment;
 import com.example.administrator.os_china.model.entity.Beans;
@@ -154,10 +154,11 @@ public class Message_Fragment extends BaseFragment {
         syntheticalListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String str = list.get(position).getId();
+                String str = list.get(position - 1).getId();
                 Log.e("TTT","传过去的数据:"+str);
-                Intent intent = new Intent(getActivity() , NewsList_Activity.class);
+                Intent intent = new Intent(getActivity() , Message_Xiangqing__Activity.class);
                 intent.putExtra("id" , str);
+                intent.putExtra("text" , "资讯详情");
                 startActivity(intent);
             }
         });

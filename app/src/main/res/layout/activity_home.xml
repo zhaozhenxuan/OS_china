@@ -14,7 +14,13 @@
         android:layout_weight="1">
     </FrameLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#cbd1d4"/>
+
     <RadioGroup
+        android:layout_marginTop="5dp"
         android:id="@+id/Bottom_Group"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -29,6 +35,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:text="综合"
+            android:checked="true"
             android:gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:id="@+id/ZongHeBtn"
