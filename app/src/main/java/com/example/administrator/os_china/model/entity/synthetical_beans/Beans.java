@@ -1,4 +1,4 @@
-package com.example.administrator.os_china.model.entity;
+package com.example.administrator.os_china.model.entity.synthetical_beans;
 
 import java.util.List;
 

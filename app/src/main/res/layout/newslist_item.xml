@@ -4,13 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <RelativeLayout
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#24CF5F">
 
         <ImageView
-
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="25dp"
             android:id="@+id/img_btn_xiangqing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,13 +22,37 @@
             android:id="@+id/xiangqing_tv"
             android:textColor="#fff"
             android:textSize="18dp"
+            android:layout_toRightOf="@id/img_btn_xiangqing"
             android:layout_marginLeft="44dp"
-            android:gravity="fill_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="标题"/>
 
-    </android.support.v7.widget.Toolbar>
+        <FrameLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp">
+
+            <ImageView
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_menu_comment"/>
+            <TextView
+                android:layout_marginLeft="6dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newslist_number"
+                android:textColor="#fff"
+                android:text="1"/>
+        </FrameLayout>
+
+    </RelativeLayout>
 
     <WebView
         android:layout_width="match_parent"

@@ -22,6 +22,7 @@
         <activity android:name=".activity.Blogs_Xiangqing_Activity"></activity>
         <activity android:name=".activity.Exercise_Xiangqing_Activity"></activity>
         <activity android:name=".activity.Wenda_Xiangqing_Activity"></activity>
+        <activity android:name=".activity.DT_Activity"></activity>
     </application>
 
 </manifest>

@@ -1,27 +1,29 @@
 package com.example.administrator.os_china.adapter;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+
+import com.example.administrator.os_china.model.entity.trends_beans.Trends_Beans;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Administrator on 2017/5/14 0014.
+ * Created by Administrator on 2017/5/18 0018.
  */
 
-public class Home_ViewPagerAdapter extends FragmentPagerAdapter {
+public class Trends_ViewPagerAdapter extends FragmentPagerAdapter {
 
-    String[] name = new String[]{"开源资讯", "推荐博客", "技术问答", "每日一博"};
+    String[] name = new String[]{"最新动弹", "热门动弹", "每日乱弹", "我的动弹"};
     private ArrayList<Fragment> list;
 
-    public Home_ViewPagerAdapter(FragmentManager fm,ArrayList<Fragment> list) {
+    public Trends_ViewPagerAdapter(FragmentManager fm , ArrayList<Fragment> list) {
         super(fm);
         this.list = list;
     }
+
 
     @Override
     public Fragment getItem(int position) {

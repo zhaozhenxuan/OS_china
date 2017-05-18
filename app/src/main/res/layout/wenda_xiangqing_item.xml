@@ -20,21 +20,20 @@
 
         <TextView
             android:layout_toRightOf="@id/wenda_img_btn_xiangqing"
-            android:layout_gravity="center_vertical"
             android:id="@+id/wenda_xiangqing_tv"
             android:textColor="#fff"
             android:textSize="18dp"
             android:layout_marginLeft="30dp"
-            android:gravity="fill_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="标题"/>
 
         <FrameLayout
+            android:layout_marginTop="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp">
+            android:layout_marginRight="20dp">
 
             <ImageView
                 android:layout_marginRight="30dp"
@@ -42,8 +41,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ping"/>
+                android:src="@drawable/ic_menu_comment"/>
             <TextView
+                android:layout_marginLeft="6dp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

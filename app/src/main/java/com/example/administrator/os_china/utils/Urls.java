@@ -45,4 +45,16 @@ public class Urls {
     //最新博客
     public static final String ZUIXIN = BOKEBASEURL + "action/api/blog_list";
 
+
+    /**
+     * 动弹区
+     */
+    //最新动弹
+    public static final String ZUIXINDT = BASEUSER + "action/api/tweet_list";
+
+    //热门动弹
+    public static final String REMENDT = BASEUSER + "action/api/tweet_list";
+
+    //我的动弹
+    public static final String MINEDT = BASEUSER + "action/api/tweet_list";
 }

@@ -11,13 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.activity.Blogs_Xiangqing_Activity;
 import com.example.administrator.os_china.activity.Wenda_Xiangqing_Activity;
 import com.example.administrator.os_china.adapter.synthetical_Adapter.AnswersAdapter;
 import com.example.administrator.os_china.base.BaseFragment;
-import com.example.administrator.os_china.model.entity.Answers_beans;
-import com.example.administrator.os_china.model.http.biz.message.INewsModel;
-import com.example.administrator.os_china.model.http.biz.message.NewsMineImpl;
+import com.example.administrator.os_china.model.entity.synthetical_beans.Answers_beans;
+import com.example.administrator.os_china.model.http.biz.message.news.INewsModel;
+import com.example.administrator.os_china.model.http.biz.message.news.NewsMineImpl;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
 import com.example.administrator.os_china.utils.ThreadUtils;
 import com.thoughtworks.xstream.XStream;

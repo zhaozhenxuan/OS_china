@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
-import com.example.administrator.os_china.model.entity.Newslist_Xiangqing_Beans;
-import com.example.administrator.os_china.model.http.biz.message.INewsModel;
-import com.example.administrator.os_china.model.http.biz.message.NewsMineImpl;
+import com.example.administrator.os_china.model.entity.synthetical_beans.Newslist_Xiangqing_Beans;
+import com.example.administrator.os_china.model.http.biz.message.news.INewsModel;
+import com.example.administrator.os_china.model.http.biz.message.news.NewsMineImpl;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
 import com.thoughtworks.xstream.XStream;
 
@@ -31,6 +31,8 @@ public class Message_Xiangqing__Activity extends BaseActivity {
     ImageView imgBtnXiangqing;
     @BindView(R.id.xiangqing_tv)
     TextView xiangqingTv;
+    @BindView(R.id.newslist_number)
+    TextView newslistNumber;
     private String Id;
     private INewsModel iNewsModel;
     private String rurl;
@@ -74,6 +76,7 @@ public class Message_Xiangqing__Activity extends BaseActivity {
 
                 Newslist_Xiangqing_Beans beans = (Newslist_Xiangqing_Beans) xStream.fromXML(result);
 
+                newslistNumber.setText(beans.getNews().getCommentCount());
                 rurl = beans.getNews().getUrl();
 
 

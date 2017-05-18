@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
-import com.example.administrator.os_china.model.entity.Blogs_Xiangqing_Beans;
-import com.example.administrator.os_china.model.http.biz.message.INewsModel;
-import com.example.administrator.os_china.model.http.biz.message.NewsMineImpl;
+import com.example.administrator.os_china.model.entity.synthetical_beans.Blogs_Xiangqing_Beans;
+import com.example.administrator.os_china.model.http.biz.message.news.INewsModel;
+import com.example.administrator.os_china.model.http.biz.message.news.NewsMineImpl;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
 import com.thoughtworks.xstream.XStream;
 
@@ -32,6 +32,8 @@ public class Blogs_Xiangqing_Activity extends BaseActivity {
     ImageView imgBtnXiangqing;
     @BindView(R.id.xiangqing_tv)
     TextView xiangqingTv;
+    @BindView(R.id.newslist_number)
+    TextView newslistNumber;
     private String Id;
     private INewsModel iNewsModel;
     private String rurl;
@@ -69,6 +71,7 @@ public class Blogs_Xiangqing_Activity extends BaseActivity {
 
                 Blogs_Xiangqing_Beans beans = (Blogs_Xiangqing_Beans) xStream.fromXML(result);
 
+                newslistNumber.setText(beans.getBlog().getCommentCount());
                 rurl = beans.getBlog().getUrl();
 
 
@@ -99,7 +102,7 @@ public class Blogs_Xiangqing_Activity extends BaseActivity {
         imgBtnXiangqing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("TAG","点击了图片按键");
+                Log.e("TAG", "点击了图片按键");
                 onBackPressed();
             }
         });

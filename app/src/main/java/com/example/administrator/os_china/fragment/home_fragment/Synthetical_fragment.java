@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.adapter.Home_ViewPagerAdapter;
+import com.example.administrator.os_china.adapter.Synthetical_ViewPagerAdapter;
 import com.example.administrator.os_china.base.BaseFragment;
 import com.example.administrator.os_china.fragment.Synthetical_fragment.Blogs_Fragment;
 import com.example.administrator.os_china.fragment.Synthetical_fragment.Exercise_Fragment;
@@ -47,7 +47,7 @@ public class Synthetical_fragment extends BaseFragment {
     Unbinder unbinder;
 
     private ArrayList<Fragment> list;
-    private Home_ViewPagerAdapter myPageAdapter;
+    private Synthetical_ViewPagerAdapter myPageAdapter;
 
     @Override
     public int getLayoutId() {
@@ -75,7 +75,7 @@ public class Synthetical_fragment extends BaseFragment {
 
 
 
-        myPageAdapter = new Home_ViewPagerAdapter(getChildFragmentManager(), list);
+        myPageAdapter = new Synthetical_ViewPagerAdapter(getChildFragmentManager(), list);
         //加载多少Fragment
         syntheticalPager.setOffscreenPageLimit(4);
 

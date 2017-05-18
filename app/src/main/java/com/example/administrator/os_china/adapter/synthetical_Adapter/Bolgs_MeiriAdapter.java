@@ -8,8 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.model.entity.Blogs_beans;
-import com.example.administrator.os_china.model.entity.Bolgs_Zuixin_Beans;
+import com.example.administrator.os_china.model.entity.synthetical_beans.Bolgs_Zuixin_Beans;
 
 import java.util.List;
 

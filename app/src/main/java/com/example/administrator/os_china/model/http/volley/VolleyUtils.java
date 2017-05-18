@@ -94,7 +94,7 @@ public class VolleyUtils implements IHttp {
                 return params;
             }
         };
-
+        Log.e("TTT","打印URL ：" +url+params);
         queue.add(stringRequest);
 
 

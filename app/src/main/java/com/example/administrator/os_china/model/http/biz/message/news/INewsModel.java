@@ -1,4 +1,4 @@
-package com.example.administrator.os_china.model.http.biz.message;
+package com.example.administrator.os_china.model.http.biz.message.news;
 
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
 

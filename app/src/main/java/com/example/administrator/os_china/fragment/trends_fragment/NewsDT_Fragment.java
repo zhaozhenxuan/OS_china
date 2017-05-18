@@ -1,21 +1,22 @@
-package com.example.administrator.os_china.fragment.Synthetical_fragment;
+package com.example.administrator.os_china.fragment.trends_fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.activity.Blogs_Xiangqing_Activity;
+import com.example.administrator.os_china.activity.DT_Activity;
+import com.example.administrator.os_china.adapter.Trends_ViewPagerAdapter;
 import com.example.administrator.os_china.adapter.synthetical_Adapter.BlogsAdapter;
+import com.example.administrator.os_china.adapter.trends_Adapter.Trends_Adapter;
 import com.example.administrator.os_china.base.BaseFragment;
+import com.example.administrator.os_china.fragment.home_fragment.Find_fragment;
 import com.example.administrator.os_china.model.entity.synthetical_beans.Blogs_beans;
-import com.example.administrator.os_china.model.http.biz.message.news.INewsModel;
-import com.example.administrator.os_china.model.http.biz.message.news.NewsMineImpl;
+import com.example.administrator.os_china.model.entity.trends_beans.Trends_Beans;
+import com.example.administrator.os_china.model.http.biz.message.dt.DtImpl;
+import com.example.administrator.os_china.model.http.biz.message.dt.IDt;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
 import com.example.administrator.os_china.utils.ThreadUtils;
 import com.thoughtworks.xstream.XStream;
@@ -25,45 +26,46 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrClassicDefaultFooter;
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
+import static com.example.administrator.os_china.R.id.framelayut;
+
+
 /**
- * Created by Administrator on 2017/5/14 0014.
- * 推荐博客Fragment
+ * Created by Administrator on 2017/5/18 0018.
+ * 最新动弹
  */
 
-public class Blogs_Fragment extends BaseFragment {
+public class NewsDT_Fragment extends BaseFragment {
 
-    @BindView(R.id.blogs_listview)
-    ListView blogsListview;
-    Unbinder unbinder;
-    @BindView(R.id.blogs_ptr)
-    PtrFrameLayout blogsPtr;
-    private INewsModel iNewsModel;
-    private List<Blogs_beans.BlogBean> list = new ArrayList<>();
-    private BlogsAdapter blogsAdapter;
+    private ListView trends_newsdt__listview;
+    private Trends_Adapter pagerAdapter;
+    private List<Trends_Beans.TweetBean> list = new ArrayList<>();
+    private PtrFrameLayout frameLayout;
+    private IDt iDt;
     private int page = 1;
     private String st;
 
+
     @Override
     public int getLayoutId() {
-        return R.layout.synthetical_blogs_item;
+        return R.layout.trends_newsdt_item;
     }
 
     @Override
     public void initView(View view) {
+        trends_newsdt__listview = (ListView) getActivity().findViewById(R.id.trends_newsdt__listview);
+        frameLayout = (PtrFrameLayout) getActivity().findViewById(R.id.trends_ptr);
 
     }
 
     @Override
     public void initData() {
-        iNewsModel = new NewsMineImpl();
+        iDt = new DtImpl();
+
 
         /**
          * 上拉加载和下拉刷新的
@@ -71,12 +73,12 @@ public class Blogs_Fragment extends BaseFragment {
         PtrClassicDefaultHeader defaultHeader = new PtrClassicDefaultHeader(getActivity());
         PtrClassicDefaultFooter defaultFooter = new PtrClassicDefaultFooter(getActivity());
 
-        blogsPtr.setHeaderView(defaultHeader);
-        blogsPtr.setFooterView(defaultFooter);
-        blogsPtr.addPtrUIHandler(defaultFooter);
-        blogsPtr.addPtrUIHandler(defaultHeader);
+        frameLayout.setHeaderView(defaultHeader);
+        frameLayout.setFooterView(defaultFooter);
+        frameLayout.addPtrUIHandler(defaultFooter);
+        frameLayout.addPtrUIHandler(defaultHeader);
 
-        blogsPtr.setPtrHandler(new PtrDefaultHandler2() {
+        frameLayout.setPtrHandler(new PtrDefaultHandler2() {
             //加载更多
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
@@ -88,9 +90,10 @@ public class Blogs_Fragment extends BaseFragment {
                         ThreadUtils.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
                                 loderData();
-                                blogsAdapter.notifyDataSetChanged();
-                                blogsPtr.refreshComplete();
+                                pagerAdapter.notifyDataSetChanged();
+                                frameLayout.refreshComplete();
                             }
                         });
                     }
@@ -107,8 +110,8 @@ public class Blogs_Fragment extends BaseFragment {
                         ThreadUtils.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                blogsAdapter.notifyDataSetChanged();
-                                blogsPtr.refreshComplete();
+                                pagerAdapter.notifyDataSetChanged();
+                                frameLayout.refreshComplete();
                             }
                         });
                     }
@@ -116,43 +119,48 @@ public class Blogs_Fragment extends BaseFragment {
             }
         });
 
-
     }
 
     @Override
     public void initListener() {
-        blogsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            trends_newsdt__listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String str = list.get(position ).getId();
-                Log.e("TTT","传过去的数据:"+str);
-                Intent intent = new Intent(getActivity() , Blogs_Xiangqing_Activity.class);
-                intent.putExtra("id" , str);
-                intent.putExtra("text" , "博客详情");
+                String url = list.get(position).getPortrait();
+                String content = list.get(position).getBody();
+                String name = list.get(position).getAuthor();
+                Intent intent = new Intent(getActivity() , DT_Activity.class);
+                intent.putExtra("url",url);
+                intent.putExtra("content",content);
+                intent.putExtra("name",name);
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
     public void loderData() {
         st = page + "";
-        iNewsModel.Blogs_Tuijian_List(st, new MyCallBack() {
+        iDt.ZuixinDT(st, new MyCallBack() {
             @Override
             public void onSuccess(String result) {
+
+                Log.e("SSS","最新动弹:"+result);
+
                 XStream xStream = new XStream();
-                xStream.alias("oschina", Blogs_beans.class);
-                xStream.alias("blog", Blogs_beans.BlogBean.class);
+                xStream.alias("oschina", Trends_Beans.class);
+                xStream.alias("tweet", Trends_Beans.TweetBean.class);
+                xStream.alias("user", Trends_Beans.TweetBean.UserBean.class);
 
-                Blogs_beans beans = (Blogs_beans) xStream.fromXML(result);
+                Trends_Beans beans = (Trends_Beans) xStream.fromXML(result);
 
-                List<Blogs_beans.BlogBean> blogs = beans.getBlogs();
-                list.addAll(blogs);
+                List<Trends_Beans.TweetBean> tweets = beans.getTweets();
+                list.addAll(tweets);
 
-                blogsAdapter = new BlogsAdapter(getActivity(), list);
+                pagerAdapter = new Trends_Adapter(getActivity(), list);
 
-                blogsListview.setAdapter(blogsAdapter);
+                trends_newsdt__listview.setAdapter(pagerAdapter);
+
 
             }
 
@@ -161,19 +169,5 @@ public class Blogs_Fragment extends BaseFragment {
 
             }
         });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 }

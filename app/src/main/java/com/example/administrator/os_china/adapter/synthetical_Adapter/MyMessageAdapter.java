@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.model.entity.Beans;
+import com.example.administrator.os_china.model.entity.synthetical_beans.Beans;
 
 import java.util.List;
 

@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
-import com.example.administrator.os_china.model.entity.Wenda_Xiangqing_Beans;
-import com.example.administrator.os_china.model.http.biz.message.INewsModel;
-import com.example.administrator.os_china.model.http.biz.message.NewsMineImpl;
+import com.example.administrator.os_china.model.entity.synthetical_beans.Wenda_Xiangqing_Beans;
+import com.example.administrator.os_china.model.http.biz.message.news.INewsModel;
+import com.example.administrator.os_china.model.http.biz.message.news.NewsMineImpl;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
 import com.thoughtworks.xstream.XStream;
 
@@ -29,6 +29,8 @@ public class Wenda_Xiangqing_Activity extends BaseActivity {
     ImageView wendaImgBtnXiangqing;
     @BindView(R.id.wenda_xiangqing_tv)
     TextView wendaXiangqingTv;
+    @BindView(R.id.wenda_number)
+    TextView wendaNumber;
     private String Id;
     private INewsModel iNewsModel;
     private String rurl;
@@ -67,6 +69,7 @@ public class Wenda_Xiangqing_Activity extends BaseActivity {
 
                 Wenda_Xiangqing_Beans beans = (Wenda_Xiangqing_Beans) xStream.fromXML(result);
 
+                wendaNumber.setText(beans.getPost().getAnswerCount());
                 rurl = beans.getPost().getUrl();
 
                 wendaWebView.loadUrl(rurl);

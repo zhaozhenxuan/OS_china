@@ -1,4 +1,4 @@
-package com.example.administrator.os_china.model.entity;
+package com.example.administrator.os_china.model.entity.synthetical_beans;
 
 /**
  * Created by Administrator on 2017/5/17 0017.

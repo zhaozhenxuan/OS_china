@@ -1,4 +1,4 @@
-package com.example.administrator.os_china.model.entity;
+package com.example.administrator.os_china.model.entity.synthetical_beans;
 
 import java.util.List;
 
@@ -6,8 +6,7 @@ import java.util.List;
  * Created by Administrator on 2017/5/15 0015.
  */
 
-
-public class Bolgs_Zuixin_Beans {
+public class Blogs_beans {
 
     private String pagesize;
     private List<BlogBean> blogs;
@@ -27,7 +26,6 @@ public class Bolgs_Zuixin_Beans {
     public void setBlogs(List<BlogBean> blogs) {
         this.blogs = blogs;
     }
-
 
     public static class BlogBean {
         private String id;

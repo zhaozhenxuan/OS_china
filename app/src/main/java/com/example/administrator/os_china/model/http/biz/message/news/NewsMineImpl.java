@@ -1,4 +1,4 @@
-package com.example.administrator.os_china.model.http.biz.message;
+package com.example.administrator.os_china.model.http.biz.message.news;
 
 import android.util.Log;
 
@@ -8,8 +8,6 @@ import com.example.administrator.os_china.utils.Urls;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.example.administrator.os_china.utils.Urls.XINWEN;
 
 /**
  * Created by Administrator on 2017/5/15 0015.

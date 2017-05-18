@@ -1,10 +1,12 @@
-package com.example.administrator.os_china.adapter.synthetical_Adapter;
+package com.example.administrator.os_china.adapter.trends_Adapter;
+
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,20 +18,22 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.model.entity.synthetical_beans.Answers_beans;
+import com.example.administrator.os_china.adapter.synthetical_Adapter.BlogsAdapter;
+import com.example.administrator.os_china.model.entity.trends_beans.Trends_Beans;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/5/15 0015.
+ * Created by Administrator on 2017/5/18 0018.
  */
 
-public class AnswersAdapter extends BaseAdapter {
+public class Trends_Adapter extends BaseAdapter {
 
     private Context context;
-    private List<Answers_beans.PostBean> list;
+    private List<Trends_Beans.TweetBean> list;
 
-    public AnswersAdapter(Context context, List<Answers_beans.PostBean> list) {
+    public Trends_Adapter(Context context, List<Trends_Beans.TweetBean> list) {
+
         this.context = context;
         this.list = list;
     }
@@ -55,31 +59,34 @@ public class AnswersAdapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView == null){
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_inquire , null);
-            holder.tv_inquire_a = (TextView) convertView.findViewById(R.id.tv_inquire_a);
-            holder.tv_inquire_b = (TextView) convertView.findViewById(R.id.tv_inquire_b);
-            holder.tv_inquire_c = (TextView) convertView.findViewById(R.id.tv_inquire_c);
-            holder.inquire_iv = (ImageView) convertView.findViewById(R.id.inquire_iv);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_trends_newsdt , null);
+            holder.tv_trends_a = (TextView) convertView.findViewById(R.id.tv_trends_a);
+            holder.tv_trends_b = (TextView) convertView.findViewById(R.id.tv_trends_b);
+            holder.trends_iv = (ImageView) convertView.findViewById(R.id.trends_iv);
+            holder.trends_image = (ImageView) convertView.findViewById(R.id.trends_image);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        Answers_beans.PostBean postBean = list.get(position);
+        Trends_Beans.TweetBean tweetBean = list.get(position);
 
-        holder.tv_inquire_a.setText(postBean.getTitle());
-        holder.tv_inquire_b.setText(postBean.getBody());
-        holder.tv_inquire_c.setText("@"+postBean.getAuthor());
+        String str = tweetBean.getImgSmall();
+        holder.tv_trends_a.setText(tweetBean.getAuthor());
+        holder.tv_trends_b.setText(tweetBean.getBody());
 
-        Glide.with(context).load(postBean.getPortrait()).transform(new GlideCircleTransform(context)).into(holder.inquire_iv);
+        Glide.with(context).load(tweetBean.getPortrait()).transform(new GlideCircleTransform(context)).into(holder.trends_iv);
+        if(str != null)
+            Glide.with(context).load(str).into(holder.trends_image);
+
 
         return convertView;
     }
 
     class ViewHolder{
-        private ImageView inquire_iv;
-        private TextView tv_inquire_a;
-        private TextView tv_inquire_b;
-        private TextView tv_inquire_c;
+        private ImageView trends_iv;
+        private ImageView trends_image;
+        private TextView tv_trends_a;
+        private TextView tv_trends_b;
     }
 
     class GlideCircleTransform extends BitmapTransformation {
