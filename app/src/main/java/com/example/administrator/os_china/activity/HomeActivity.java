@@ -3,13 +3,16 @@ package com.example.administrator.os_china.activity;
 import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.FragmentManager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.example.administrator.os_china.App;
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
 import com.example.administrator.os_china.base.BaseFragment;
@@ -25,6 +28,7 @@ import butterknife.OnClick;
 
 public class HomeActivity extends BaseActivity {
 
+    private long mExitTime;
     @BindView(R.id.contentGroup)
     FrameLayout contentGroup;
     @BindView(R.id.ZongHeBtn)
@@ -99,20 +103,34 @@ public class HomeActivity extends BaseActivity {
      */
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
-        FragmentManager manager = getSupportFragmentManager();
+        FragmentManager manager = App.activity.getSupportFragmentManager();
         FragmentManager.BackStackEntry entry = manager.getBackStackEntryAt(manager.getBackStackEntryCount() - 1);
         String name = entry.getName();
-        if ("Synthetical_fragment".equals(name) || "Fragment_tweet".equals(name)
-                || "find_fragment".equals(name) || "my_fragment".equals(name)) {
-            Process.killProcess(Process.myPid());
+        if ("Synthetical_fragment".equals(name) || "Trends_fragment".equals(name)
+                || "Find_fragment".equals(name) || "My_fragment".equals(name)) {
+            //Process.killProcess(Process.myPid());
             System.exit(0);
         } else {
             manager.popBackStackImmediate();
-            String fragmentName = manager.getBackStackEntryAt(manager.getBackStackEntryCount() - 1).getName();
-            BaseFragment fragment = (BaseFragment) manager.findFragmentByTag(fragmentName);
+            String fragmentName = App.activity.getSupportFragmentManager().getBackStackEntryAt(App.activity.getSupportFragmentManager().getBackStackEntryCount() - 1).getName();
+            BaseFragment fragment = (BaseFragment) App.activity.getSupportFragmentManager().findFragmentByTag(fragmentName);
             FragmentBuilder.getInstance().setLastFragment(fragment);
         }
+
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Object mHelperUtils;
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

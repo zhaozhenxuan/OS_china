@@ -36,8 +36,6 @@ import static com.example.administrator.os_china.R.id.synthetical_tab;
 public class Synthetical_fragment extends BaseFragment {
     @BindView(R.id.tv_toobar)
     TextView tvToobar;
-    @BindView(R.id.synthetical_toolbar)
-    Toolbar syntheticalToolbar;
     @BindView(synthetical_tab)
     TabLayout syntheticalTab;
     @BindView(synthetical_pager)

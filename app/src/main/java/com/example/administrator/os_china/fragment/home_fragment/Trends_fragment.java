@@ -34,8 +34,6 @@ public class Trends_fragment extends BaseFragment {
 
     @BindView(R.id.tv_toobar)
     TextView tvToobar;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.treads_tab)
     TabLayout treadsTab;
     @BindView(R.id.trends_pager)

@@ -57,32 +57,37 @@ public class Trends_Adapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        if(convertView == null){
+        if (convertView == null) {
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_trends_newsdt , null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_trends_newsdt, null);
             holder.tv_trends_a = (TextView) convertView.findViewById(R.id.tv_trends_a);
             holder.tv_trends_b = (TextView) convertView.findViewById(R.id.tv_trends_b);
             holder.trends_iv = (ImageView) convertView.findViewById(R.id.trends_iv);
             holder.trends_image = (ImageView) convertView.findViewById(R.id.trends_image);
             convertView.setTag(holder);
-        }else{
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
         Trends_Beans.TweetBean tweetBean = list.get(position);
 
-        String str = tweetBean.getImgSmall();
+        tweetBean.getImgSmall();
         holder.tv_trends_a.setText(tweetBean.getAuthor());
         holder.tv_trends_b.setText(tweetBean.getBody());
 
         Glide.with(context).load(tweetBean.getPortrait()).transform(new GlideCircleTransform(context)).into(holder.trends_iv);
-        if(str != null)
-            Glide.with(context).load(str).into(holder.trends_image);
+
+        if (tweetBean.getImgSmall().equals("")) {
+            holder.trends_image.setVisibility(View.GONE);
+        } else {
+            holder.trends_image.setVisibility(View.VISIBLE);
+            Glide.with(context).load(tweetBean.getImgSmall()).into(holder.trends_image);
+        }
 
 
         return convertView;
     }
 
-    class ViewHolder{
+    class ViewHolder {
         private ImageView trends_iv;
         private ImageView trends_image;
         private TextView tv_trends_a;
@@ -99,7 +104,7 @@ public class Trends_Adapter extends BaseAdapter {
             return circleCrop(pool, toTransform);
         }
 
-        private  Bitmap circleCrop(BitmapPool pool, Bitmap source) {
+        private Bitmap circleCrop(BitmapPool pool, Bitmap source) {
             if (source == null) return null;
 
             int size = Math.min(source.getWidth(), source.getHeight());
