@@ -1,5 +1,6 @@
 package com.example.administrator.os_china.fragment.home_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.os_china.R;
+import com.example.administrator.os_china.activity.Search_Activity;
 import com.example.administrator.os_china.base.BaseFragment;
 
 import butterknife.BindView;
@@ -102,5 +104,11 @@ public class Find_fragment extends BaseFragment {
 
     @OnClick(R.id.search_btn3)
     public void onViewClicked() {
+
+        Intent intent = new Intent(getActivity() , Search_Activity.class);
+        startActivity(intent);
+
     }
+
+
 }

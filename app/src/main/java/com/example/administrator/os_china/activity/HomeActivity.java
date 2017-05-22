@@ -26,6 +26,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.R.attr.x;
+
 public class HomeActivity extends BaseActivity {
 
     private long mExitTime;
@@ -58,7 +60,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        FragmentBuilder.getInstance().start(Synthetical_fragment.class);
+        FragmentBuilder.getInstance().containerId(R.id.contentGroup).start(Synthetical_fragment.class).build();
     }
 
     @Override
@@ -82,18 +84,18 @@ public class HomeActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ZongHeBtn:
-                FragmentBuilder.getInstance().start(Synthetical_fragment.class);
+                FragmentBuilder.getInstance().containerId(R.id.contentGroup).start(Synthetical_fragment.class).build();
                 break;
             case R.id.DongTanBtn:
-                FragmentBuilder.getInstance().start(Trends_fragment.class);
+                FragmentBuilder.getInstance().containerId(R.id.contentGroup).start(Trends_fragment.class).build();
                 break;
             case R.id.AddBtn:
                 break;
             case R.id.FaXianBtn:
-                FragmentBuilder.getInstance().start(Find_fragment.class);
+                FragmentBuilder.getInstance().containerId(R.id.contentGroup).start(Find_fragment.class).build();
                 break;
             case R.id.MineBtn:
-                FragmentBuilder.getInstance().start(My_fragment.class);
+                FragmentBuilder.getInstance().containerId(R.id.contentGroup).start(My_fragment.class).build();
                 break;
         }
     }
@@ -108,7 +110,6 @@ public class HomeActivity extends BaseActivity {
         String name = entry.getName();
         if ("Synthetical_fragment".equals(name) || "Trends_fragment".equals(name)
                 || "Find_fragment".equals(name) || "My_fragment".equals(name)) {
-            //Process.killProcess(Process.myPid());
             System.exit(0);
         } else {
             manager.popBackStackImmediate();
@@ -121,8 +122,9 @@ public class HomeActivity extends BaseActivity {
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                Object mHelperUtils;
+
                 Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 mExitTime = System.currentTimeMillis();
 

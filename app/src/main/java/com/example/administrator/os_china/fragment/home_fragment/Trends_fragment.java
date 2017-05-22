@@ -1,17 +1,18 @@
 package com.example.administrator.os_china.fragment.home_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
-import com.example.administrator.os_china.adapter.Synthetical_ViewPagerAdapter;
+import com.example.administrator.os_china.activity.Search_Activity;
 import com.example.administrator.os_china.adapter.Trends_ViewPagerAdapter;
 import com.example.administrator.os_china.base.BaseFragment;
 import com.example.administrator.os_china.fragment.trends_fragment.MeiriDT_Fragment;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -39,6 +41,8 @@ public class Trends_fragment extends BaseFragment {
     @BindView(R.id.trends_pager)
     ViewPager trendsPager;
     Unbinder unbinder;
+    @BindView(R.id.search_btn)
+    ImageView searchBtn;
 
     private ArrayList<Fragment> list;
     private Trends_ViewPagerAdapter pagerAdapter;
@@ -101,5 +105,13 @@ public class Trends_fragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick(R.id.search_btn)
+    public void onViewClicked() {
+
+        Intent intent = new Intent(getActivity() , Search_Activity.class);
+        startActivity(intent);
+
     }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_weight="7"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_shape">
+
+            <ImageView
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search_icon"/>
+
+            <EditText
+                android:background="@drawable/edit_shape"
+                android:id="@+id/search_et"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="搜索博客、软件、资讯、问答、找人"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/search_tv"
+            android:textColor="#ee04f730"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="13dp"
+            android:text="取消"
+            android:layout_weight="1"
+            android:layout_alignParentRight="true"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E3E5E6"></LinearLayout>
+</LinearLayout>

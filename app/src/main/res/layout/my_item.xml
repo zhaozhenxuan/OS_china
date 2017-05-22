@@ -1,6 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+
+    <RelativeLayout
+        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <!-- 码云推荐 -->
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:id="@+id/WDXX"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/WDXX_image"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_my_message"
+                />
+
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@id/WDXX_image"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的消息"/>
+
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wei"/>
+        </RelativeLayout>
+
+        <!-- 码云推荐 -->
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:id="@+id/WDBK"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/WDBK_image"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_my_blog"
+                />
+
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@id/WDBK_image"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的博客"/>
+
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wei"/>
+        </RelativeLayout>
+
+        <!-- 码云推荐 -->
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:id="@+id/WDWD"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/WDWD_image"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_my_question"
+                />
+
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@id/WDWD_image"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的问答"/>
+
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wei"/>
+        </RelativeLayout>
+
+        <!-- 码云推荐 -->
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:id="@+id/WDHD"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/WDHD_image"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_my_event"
+                />
+
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@id/WDHD_image"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的活动"/>
+
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wei"/>
+        </RelativeLayout>
+
+        <!-- 码云推荐 -->
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:id="@+id/WDTD"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/WDTD_image"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_my_team"
+                />
+
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@id/WDTD_image"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的团队"/>
+
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wei"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
 </LinearLayout>
