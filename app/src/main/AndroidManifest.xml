@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.os_china">
 
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".App"
@@ -24,6 +25,12 @@
         <activity android:name=".activity.Wenda_Xiangqing_Activity"></activity>
         <activity android:name=".activity.DT_Activity"></activity>
         <activity android:name=".activity.Search_Activity"></activity>
+        <activity android:name=".activity.MYTJ_Activity" />
+        <activity android:name=".activity.FUJIN_Activity" />
+        <activity android:name=".activity.HUODONG_Activity" />
+        <activity android:name=".activity.KYRJ_Activity" />
+        <activity android:name=".activity.SYS_Activity" />
+        <activity android:name=".activity.YYY_Activity" />
     </application>
 
 </manifest>

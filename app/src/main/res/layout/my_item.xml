@@ -6,9 +6,48 @@
 
 
     <RelativeLayout
+        android:background="#24CF5F"
         android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="0dp"></RelativeLayout>
+        android:layout_height="0dp">
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/my_setting"
+            android:src="@drawable/btn_my_setting"/>
+
+        <ImageView
+            android:id="@+id/btn_qrcode"
+            android:layout_margin="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/btn_qrcode"
+            android:layout_alignParentRight="true"/>
+
+        <ImageView
+            android:id="@+id/image_login"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/btn_qrcode"
+            android:src="@drawable/new_moon_with_face"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <TextView
+            android:textSize="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/image_login"
+            android:textColor="#fff"
+            android:text="点击头像登录"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -51,6 +90,12 @@
                 android:src="@drawable/wei"/>
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_marginLeft="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E3E5E6"></LinearLayout>
+
         <!-- 码云推荐 -->
         <RelativeLayout
             android:gravity="center_vertical"
@@ -85,6 +130,12 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/wei"/>
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E3E5E6"></LinearLayout>
 
         <!-- 码云推荐 -->
         <RelativeLayout
@@ -121,6 +172,12 @@
                 android:src="@drawable/wei"/>
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_marginLeft="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E3E5E6"></LinearLayout>
+
         <!-- 码云推荐 -->
         <RelativeLayout
             android:gravity="center_vertical"
@@ -155,6 +212,12 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/wei"/>
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E3E5E6"></LinearLayout>
 
         <!-- 码云推荐 -->
         <RelativeLayout

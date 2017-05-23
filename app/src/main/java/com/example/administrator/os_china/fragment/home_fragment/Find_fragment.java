@@ -9,7 +9,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.os_china.R;
+import com.example.administrator.os_china.activity.FUJIN_Activity;
+import com.example.administrator.os_china.activity.HUODONG_Activity;
+import com.example.administrator.os_china.activity.KYRJ_Activity;
+import com.example.administrator.os_china.activity.MYTJ_Activity;
+import com.example.administrator.os_china.activity.SYS_Activity;
 import com.example.administrator.os_china.activity.Search_Activity;
+import com.example.administrator.os_china.activity.YYY_Activity;
 import com.example.administrator.os_china.base.BaseFragment;
 
 import butterknife.BindView;
@@ -83,20 +89,38 @@ public class Find_fragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.MYTJ:
 
+                Intent intent = new Intent(getActivity() , MYTJ_Activity.class);
+                startActivity(intent);
+
                 break;
             case R.id.KYRJ:
+
+                Intent intent1 = new Intent(getActivity() , KYRJ_Activity.class);
+                startActivity(intent1);
 
                 break;
             case R.id.SYS:
 
+                Intent intent2 = new Intent(getActivity() , SYS_Activity.class);
+                startActivity(intent2);
+
                 break;
             case R.id.YYY:
+
+                Intent intent3 = new Intent(getActivity() , YYY_Activity.class);
+                startActivity(intent3);
 
                 break;
             case R.id.FUJIN:
 
+                Intent intent4 = new Intent(getActivity() , FUJIN_Activity.class);
+                startActivity(intent4);
+
                 break;
             case R.id.HUODONG:
+
+                Intent intent5 = new Intent(getActivity() , HUODONG_Activity.class);
+                startActivity(intent5);
 
                 break;
         }

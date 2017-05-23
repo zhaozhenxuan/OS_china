@@ -7,17 +7,17 @@
     android:orientation="vertical"
     tools:context="com.example.administrator.os_china.activity.HomeActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cbd1d4"/>
+
     <FrameLayout
         android:id="@+id/contentGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
     </FrameLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#cbd1d4"/>
 
     <RadioGroup
         android:layout_marginTop="5dp"

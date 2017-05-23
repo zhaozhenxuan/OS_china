@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#24CF5F">
+
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/img_btn_yyy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"/>
+
+        <TextView
+            android:id="@+id/xiangqing_tv"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:layout_toRightOf="@id/img_btn_xiangqing"
+            android:layout_marginLeft="44dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="摇一摇"/>
+
+    </RelativeLayout>
+
+
+    <RadioGroup
+        android:background="#efe9e9"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:id="@+id/Bottom_Group"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <RadioButton
+            android:textColor="@drawable/text2"
+            android:drawableTop="@drawable/btn_shake_gift"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="礼品"
+            android:checked="true"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:id="@+id/L"
+            />
+        <RadioButton
+            android:textColor="@drawable/text2"
+            android:drawableTop="@drawable/btn_share_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="资讯 "
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:id="@+id/Z"
+            />
+
+    </RadioGroup>
+
+
+    <ImageView
+        android:id="@+id/shack"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_shake"/>
+
+    <TextView
+        android:id="@+id/tv_shack"
+        android:layout_marginTop="11dp"
+        android:text="文本消息"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shack"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
