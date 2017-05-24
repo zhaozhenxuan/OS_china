@@ -1,8 +1,10 @@
 package com.example.administrator.os_china.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.example.administrator.os_china.App;
 import com.example.administrator.os_china.R;
@@ -30,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         loderData();
     }
 
+
     //加载布局文件
     protected abstract int getLayoutId();
 
@@ -49,4 +52,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
 }

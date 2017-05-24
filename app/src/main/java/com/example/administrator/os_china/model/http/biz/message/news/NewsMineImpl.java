@@ -106,4 +106,35 @@ public class NewsMineImpl implements INewsModel {
         HttpFactory.onCreate().doGet(Urls.WENDAXIANGQING, params, myCallBack);
         Log.i("tag", Urls.WENDAXIANGQING);
     }
+
+    /**
+     *
+     * @param pageIndex
+     * @param myCallBack
+     * 线下活动
+     */
+    @Override
+    public void HuoDong(String pageIndex, MyCallBack myCallBack) {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("uid", "0");
+        params.put("pageIndex", pageIndex);
+        params.put("pageSize", "10");
+
+        HttpFactory.onCreate().doGet(Urls.HUODONG, params, myCallBack);
+        Log.i("tag", Urls.HUODONG);
+
+
+    }
+
+    @Override
+    public void HD_XiangQing(String Id, MyCallBack myCallBack) {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("id", Id);
+
+        HttpFactory.onCreate().doGet(Urls.HD_XIANGQING, params, myCallBack);
+        Log.i("tag", Urls.HD_XIANGQING);
+
+    }
 }

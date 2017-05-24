@@ -31,6 +31,7 @@
         <activity android:name=".activity.KYRJ_Activity" />
         <activity android:name=".activity.SYS_Activity" />
         <activity android:name=".activity.YYY_Activity" />
+        <activity android:name=".activity.HD_XiangQing_Activity" />
     </application>
 
 </manifest>

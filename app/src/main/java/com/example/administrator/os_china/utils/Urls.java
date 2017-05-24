@@ -57,4 +57,31 @@ public class Urls {
 
     //我的动弹
     public static final String MINEDT = BASEUSER + "action/api/tweet_list";
+
+    /**
+     * 活动区
+     */
+    public static final String HD_BASEURL = "http://www.oschina.net/";
+
+    //活动
+    public static final String HUODONG = HD_BASEURL + "action/api/event_list";
+
+    //活动详情
+    public static final String HD_XIANGQING = HD_BASEURL + "action/api/post_detail";
+
+    /**
+     * 开源软件区
+     */
+
+    //一级分类
+    public static final String fenlei_one = BASEUSER + "action/api/softwarecatalog_list";
+
+    //二级分类
+    public static final String fenlei_two = BASEUSER + "action/api/softwarecatalog_list";
+
+    //推荐
+    public static final String RJ_tuijian = BASEUSER + "action/api/software_list";
+
+
+
 }

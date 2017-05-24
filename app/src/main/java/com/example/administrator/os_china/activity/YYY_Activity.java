@@ -47,6 +47,7 @@ public class YYY_Activity extends BaseActivity {
 
     private static final String TAG = "TestSensorActivity";
     private static final int SENSOR_SHAKE = 10;
+    private String str;
 
     @Override
     protected int getLayoutId() {
@@ -106,6 +107,10 @@ public class YYY_Activity extends BaseActivity {
             if (Math.abs(x) > medumValue || Math.abs(y) > medumValue || Math.abs(z) > medumValue) {
                 vibrator.vibrate(200);
                 Message msg = new Message();
+                str = (String) tvShack.getText();
+
+
+
                 msg.what = SENSOR_SHAKE;
                 handler.sendMessage(msg);
             }
@@ -121,14 +126,25 @@ public class YYY_Activity extends BaseActivity {
      * 动作执行
      */
     Handler handler = new Handler() {
-
         @Override
         public void handleMessage(Message msg) {
+            Log.i("abc","打印Str数据："+str);
             super.handleMessage(msg);
             switch (msg.what) {
                 case SENSOR_SHAKE:
-                    Toast.makeText(YYY_Activity.this, "检测到摇晃，执行操作！", Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "检测到摇晃，执行操作！");
+
+                    if(str.equals("摇一摇获取资讯")){
+
+                        Toast.makeText(YYY_Activity.this, "检测到摇晃，执行获取资讯！", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "检测到摇晃，执行操作！");
+
+                    }else if(str.equals("摇一摇获取礼品")){
+
+                        Toast.makeText(YYY_Activity.this, "检测到摇晃，执行获取礼品！", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "检测到摇晃，执行操作！");
+                    }
+
+
                     break;
             }
         }

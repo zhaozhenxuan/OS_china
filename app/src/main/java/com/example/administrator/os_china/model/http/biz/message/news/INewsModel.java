@@ -24,4 +24,10 @@ public interface INewsModel {
 
     void Wenda__Xiangqing(String Id , MyCallBack myCallBack);
 
+    void HuoDong(String pageIndex , MyCallBack myCallBack);
+
+    void HD_XiangQing(String Id , MyCallBack myCallBack);
+
+
+
 }
