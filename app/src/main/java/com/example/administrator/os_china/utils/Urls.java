@@ -82,6 +82,24 @@ public class Urls {
     //推荐
     public static final String RJ_tuijian = BASEUSER + "action/api/software_list";
 
+    //三级分类
+    public static final String fenlei_three = BASEUSER + "action/api/softwaretag_list";
+
+    //最新
+    public static final String RJ_zuixin = BASEUSER + "action/api/software_list";
+
+    //热门
+    public static final String RJ_remen = BASEUSER + "action/api/software_list";
+
+    //国产
+    public static final String RJ_guochan = BASEUSER + "action/api/software_list";
+
+    /**
+     * 登录有关
+     */
+
+    //登录
+    public static final String LOGIN = BASEUSER + "action/api/login_validate";
 
 
 }

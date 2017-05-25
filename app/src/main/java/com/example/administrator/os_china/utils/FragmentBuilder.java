@@ -9,6 +9,9 @@ import com.example.administrator.os_china.App;
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseFragment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static android.R.attr.isDefault;
 
 
@@ -22,32 +25,30 @@ public class FragmentBuilder {
     private static FragmentBuilder builder;
     private int containerViewId;
     private BaseFragment lastFragment;
-    private BaseFragment fragment;
+    private FragmentManager fragmentManager;
+    private Map<String, Integer> fragments;
     private FragmentTransaction transaction;
+    private String simpleName;
+    private BaseFragment fragment;
     private boolean isDefault = true;
     private boolean isBack = true;
-    private String simpleName;
     private int a = 0;
 
     private FragmentBuilder() {
+        fragmentManager = App.activity.getSupportFragmentManager();
+        fragments = new HashMap<>();
     }
 
     public static FragmentBuilder getInstance() {
         if (builder == null) {
             synchronized (FragmentBuilder.class) {
-                if (builder == null) {
+
+                if (builder == null)
                     builder = new FragmentBuilder();
-                }
             }
         }
-        return builder;
-    }
 
-    public FragmentBuilder setViewId(int viewId) {
-        if (viewId != 0) {
-            containerViewId = viewId;
-        }
-        return this;
+        return builder;
     }
 
 
@@ -56,37 +57,47 @@ public class FragmentBuilder {
         return this;
     }
 
-
     public FragmentBuilder start(Class<? extends BaseFragment> fragmentClass) {
 
-        FragmentManager fragmentManager = App.activity.getSupportFragmentManager();
+
         transaction = fragmentManager.beginTransaction();
 
         simpleName = fragmentClass.getSimpleName();
         fragment = (BaseFragment) fragmentManager.findFragmentByTag(simpleName);
-        if (fragment == null) {
-            try {
+        try {
+            if (fragment == null) {
+
                 //Java动态代理创建对象
                 fragment = fragmentClass.newInstance();
-                transaction.add(containerViewId, fragment, simpleName);
 
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                transaction.add(containerViewId, fragment, simpleName);
+                fragments.put(simpleName, containerViewId);
+
+            } else {
+                Integer containerId = fragments.get(simpleName);
+                if (containerId != containerViewId) {
+                    fragment = null;
+                    //Java动态代理创建对象
+                    fragment = fragmentClass.newInstance();
+                    transaction.add(containerViewId, fragment, simpleName);
+                }
+
             }
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
 
-        /*//隐藏上一个fragment
-        if (lastFragment != null)
-            transaction.hide(lastFragment);
-
-        //显示当前的Fragment
-        transaction.show(fragment);
-        transaction.addToBackStack(simpleName);
-        lastFragment = fragment;
-        transaction.commit();*/
-
+//        //隐藏上一个fragment
+//        if (lastFragment != null)
+//            transaction.hide(lastFragment);
+//
+//        //显示当前的Fragment
+//        transaction.show(fragment);
+//        transaction.addToBackStack(simpleName);
+//        lastFragment = fragment;
+//        transaction.commit();
 
         return this;
     }
@@ -119,13 +130,6 @@ public class FragmentBuilder {
         return this;
     }
 
-    public BaseFragment getLastFragment() {
-        return lastFragment;
-    }
-
-    public void setLastFragment(BaseFragment lastFragment) {
-        this.lastFragment = lastFragment;
-    }
 
     public FragmentBuilder isBack(boolean isBack) {
         this.isBack = isBack;
@@ -136,6 +140,16 @@ public class FragmentBuilder {
         }
         return this;
     }
+
+
+    public BaseFragment getLastFragment() {
+        return lastFragment;
+    }
+
+    public void setLastFragment(BaseFragment lastFragment) {
+        this.lastFragment = lastFragment;
+    }
+
 
     public BaseFragment build() {
         if (isDefault) {

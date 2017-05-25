@@ -137,4 +137,21 @@ public class NewsMineImpl implements INewsModel {
         Log.i("tag", Urls.HD_XIANGQING);
 
     }
+
+    /**
+     * 登录
+     * @param username
+     * @param psw
+     * @param myCallBack
+     */
+    @Override
+    public void login(String username, String psw,  MyCallBack myCallBack) {
+        Map<String, String> pramass = new HashMap<>();
+        pramass.put("username", username);
+        pramass.put("pwd", psw);
+        pramass.put("keep_login", "1");
+
+        HttpFactory.onCreate().doPost(Urls.LOGIN, pramass, myCallBack);
+        Log.i("tag", Urls.LOGIN);
+    }
 }

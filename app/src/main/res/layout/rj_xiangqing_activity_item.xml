@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#24CF5F">
+
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/img_btn_RJ_xiangqing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"/>
+
+        <TextView
+            android:layout_marginTop="3dp"
+            android:id="@+id/RJ_xiangqing_tv"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:layout_toRightOf="@id/img_btn_RJ_xiangqing"
+            android:layout_marginLeft="34dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="软件详情"/>
+
+        <FrameLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp">
+
+            <ImageView
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_menu_comment"/>
+            <TextView
+                android:layout_marginLeft="6dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/RJ_number"
+                android:textColor="#fff"
+                android:text="1"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+    <WebView
+        android:id="@+id/RJ_webview"
+        android:layout_weight="15"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></WebView>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></LinearLayout>
+
+
+</LinearLayout>

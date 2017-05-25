@@ -4,10 +4,13 @@ package com.example.administrator.os_china.fragment.find_fragment.fenlei_fragmen
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.administrator.os_china.App;
@@ -38,10 +41,13 @@ public class Two_Fragment extends BaseFragment {
     Unbinder unbinder;
 
     private String twotag;
+    private String threetag;
     private IRuanJian iRuanJian;
 
     private Fenlei_Adapter adapter;
     private List<Fenlei_Beans.SoftwareTypeBean> list = new ArrayList<>();
+    private FragmentManager fragmentManager;
+    private FragmentTransaction transaction;
 
 
     @Override
@@ -61,6 +67,25 @@ public class Two_Fragment extends BaseFragment {
 
     @Override
     public void initListener() {
+
+        twoListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                threetag = list.get(position).getTag();
+
+                SharedPreferences preferences=App.activity.getSharedPreferences("three",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferences.edit();
+                editor.putString("threetagagain",threetag);
+                editor.commit();
+
+
+                fragmentManager = App.activity.getSupportFragmentManager();
+                transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fenlei_fl , new Three_fragment() , Three_fragment.class.getSimpleName());
+                transaction.commit();
+            }
+        });
 
     }
 

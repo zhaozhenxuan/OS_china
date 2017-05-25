@@ -14,4 +14,12 @@ public interface IRuanJian {
 
     void RJ_tuijian(String pageIndex , MyCallBack myCallBack);
 
+    void fenlei_three(String searchTag ,String pageIndex , MyCallBack myCallBack);
+
+    void RJ_zuixin(String pageIndex , MyCallBack myCallBack);
+
+    void RJ_remen(String pageIndex , MyCallBack myCallBack);
+
+    void RJ_guochan(String pageIndex , MyCallBack myCallBack);
+
 }

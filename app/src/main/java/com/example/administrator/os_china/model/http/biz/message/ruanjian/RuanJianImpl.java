@@ -59,4 +59,70 @@ public class RuanJianImpl implements IRuanJian {
         HttpFactory.onCreate().doGet(Urls.RJ_tuijian, params, myCallBack);
         Log.i("tag", Urls.RJ_tuijian);
     }
+
+    /**
+     * 三级分类
+     * @param searchTag
+     * @param pageIndex
+     * @param myCallBack
+     */
+    @Override
+    public void fenlei_three(String searchTag, String pageIndex, MyCallBack myCallBack) {
+        Map<String, String> params = new HashMap<>();
+        params.put("searchTag", searchTag);
+        params.put("pageIndex", pageIndex);
+        params.put("pageSize", "20");
+
+        HttpFactory.onCreate().doGet(Urls.fenlei_three, params, myCallBack);
+        Log.i("tag", Urls.fenlei_three);
+    }
+
+    /**
+     * 最新
+     * @param pageIndex
+     * @param myCallBack
+     */
+    @Override
+    public void RJ_zuixin(String pageIndex, MyCallBack myCallBack) {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("searchTag", "time");
+        params.put("pageIndex", pageIndex);
+        params.put("pageSize", "20");
+
+        HttpFactory.onCreate().doGet(Urls.RJ_zuixin, params, myCallBack);
+        Log.i("tag", Urls.RJ_zuixin);
+    }
+
+    /**
+     * 热门
+     * @param pageIndex
+     * @param myCallBack
+     */
+    @Override
+    public void RJ_remen(String pageIndex, MyCallBack myCallBack) {
+        Map<String, String> params = new HashMap<>();
+        params.put("searchTag", "view");
+        params.put("pageIndex", pageIndex);
+        params.put("pageSize", "20");
+
+        HttpFactory.onCreate().doGet(Urls.RJ_remen, params, myCallBack);
+        Log.i("tag", Urls.RJ_remen);
+    }
+
+    /**
+     * 国产
+     * @param pageIndex
+     * @param myCallBack
+     */
+    @Override
+    public void RJ_guochan(String pageIndex, MyCallBack myCallBack) {
+        Map<String, String> params = new HashMap<>();
+        params.put("searchTag", "list_cn");
+        params.put("pageIndex", pageIndex);
+        params.put("pageSize", "20");
+
+        HttpFactory.onCreate().doGet(Urls.RJ_guochan, params, myCallBack);
+        Log.i("tag", Urls.RJ_guochan);
+    }
 }
