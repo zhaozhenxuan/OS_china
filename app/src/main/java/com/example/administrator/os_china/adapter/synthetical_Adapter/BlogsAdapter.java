@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
+import com.example.administrator.os_china.model.entity.synthetical_beans.Beans;
 import com.example.administrator.os_china.model.entity.synthetical_beans.Blogs_beans;
+import com.example.administrator.os_china.utils.Dates;
 
 import java.util.List;
 
@@ -51,6 +53,8 @@ public class BlogsAdapter extends BaseAdapter {
             holder.tv_blogs_a = (TextView) convertView.findViewById(R.id.tv_blogs_a);
             holder.tv_blogs_b = (TextView) convertView.findViewById(R.id.tv_blogs_b);
             holder.tv_blogs_c = (TextView) convertView.findViewById(R.id.tv_blogs_c);
+            holder.blogs_number = (TextView) convertView.findViewById(R.id.blogs_number);
+            holder.blogs_time = (TextView) convertView.findViewById(R.id.blogs_time);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -60,6 +64,8 @@ public class BlogsAdapter extends BaseAdapter {
         holder.tv_blogs_a.setText(blogBean.getTitle());
         holder.tv_blogs_b.setText(blogBean.getBody());
         holder.tv_blogs_c.setText("@"+blogBean.getAuthorname());
+        holder.blogs_number.setText(blogBean.getCommentCount());
+        holder.blogs_time.setText(Dates.getDate(blogBean.getPubDate()));
 
         return convertView;
     }
@@ -68,5 +74,7 @@ public class BlogsAdapter extends BaseAdapter {
         private TextView tv_blogs_a;
         private TextView tv_blogs_b;
         private TextView tv_blogs_c;
+        private TextView blogs_time;
+        private TextView blogs_number;
     }
 }

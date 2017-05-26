@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.administrator.os_china.model.http.callback.HttpFactory;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
+import com.example.administrator.os_china.model.http.okhttp.OkhttpUtils;
 import com.example.administrator.os_china.utils.Urls;
 
 import java.util.HashMap;
@@ -151,7 +152,6 @@ public class NewsMineImpl implements INewsModel {
         pramass.put("pwd", psw);
         pramass.put("keep_login", "1");
 
-        HttpFactory.onCreate().doPost(Urls.LOGIN, pramass, myCallBack);
-        Log.i("tag", Urls.LOGIN);
+        OkhttpUtils.getOkhttpUtils().doPost(Urls.LOGIN , pramass , myCallBack);
     }
 }

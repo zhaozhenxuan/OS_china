@@ -17,6 +17,7 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.model.entity.synthetical_beans.Answers_beans;
+import com.example.administrator.os_china.utils.Dates;
 
 import java.util.List;
 
@@ -60,6 +61,8 @@ public class AnswersAdapter extends BaseAdapter {
             holder.tv_inquire_b = (TextView) convertView.findViewById(R.id.tv_inquire_b);
             holder.tv_inquire_c = (TextView) convertView.findViewById(R.id.tv_inquire_c);
             holder.inquire_iv = (ImageView) convertView.findViewById(R.id.inquire_iv);
+            holder.inquire_number = (TextView) convertView.findViewById(R.id.inquire_number);
+            holder.inquire_time = (TextView) convertView.findViewById(R.id.inquire_time);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -69,6 +72,8 @@ public class AnswersAdapter extends BaseAdapter {
         holder.tv_inquire_a.setText(postBean.getTitle());
         holder.tv_inquire_b.setText(postBean.getBody());
         holder.tv_inquire_c.setText("@"+postBean.getAuthor());
+        holder.inquire_number.setText(postBean.getAnswerCount());
+        holder.inquire_time.setText(Dates.getDate(postBean.getPubDate()));
 
         Glide.with(context).load(postBean.getPortrait()).transform(new GlideCircleTransform(context)).into(holder.inquire_iv);
 
@@ -80,6 +85,8 @@ public class AnswersAdapter extends BaseAdapter {
         private TextView tv_inquire_a;
         private TextView tv_inquire_b;
         private TextView tv_inquire_c;
+        private TextView inquire_number;
+        private TextView inquire_time;
     }
 
     class GlideCircleTransform extends BitmapTransformation {

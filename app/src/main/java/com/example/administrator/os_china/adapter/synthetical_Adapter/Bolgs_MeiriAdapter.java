@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.model.entity.synthetical_beans.Bolgs_Zuixin_Beans;
+import com.example.administrator.os_china.utils.Dates;
 
 import java.util.List;
 
@@ -51,6 +52,8 @@ public class Bolgs_MeiriAdapter extends BaseAdapter {
             holder.tv_exercise_a = (TextView) convertView.findViewById(R.id.tv_exercise_a);
             holder.tv_exercise_b = (TextView) convertView.findViewById(R.id.tv_exercise_b);
             holder.tv_exercise_c = (TextView) convertView.findViewById(R.id.tv_exercise_c);
+            holder.exe_number = (TextView) convertView.findViewById(R.id.exe_number);
+            holder.exe_time = (TextView) convertView.findViewById(R.id.exe_time);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -60,6 +63,8 @@ public class Bolgs_MeiriAdapter extends BaseAdapter {
         holder.tv_exercise_a.setText(beans.getTitle());
         holder.tv_exercise_b.setText(beans.getBody());
         holder.tv_exercise_c.setText("@"+beans.getAuthorname());
+        holder.exe_number.setText(beans.getCommentCount());
+        holder.exe_time.setText(Dates.getDate(beans.getPubDate()));
 
         return convertView;
     }
@@ -68,5 +73,7 @@ public class Bolgs_MeiriAdapter extends BaseAdapter {
         private TextView tv_exercise_a;
         private TextView tv_exercise_b;
         private TextView tv_exercise_c;
+        private TextView exe_number;
+        private TextView exe_time;
     }
 }

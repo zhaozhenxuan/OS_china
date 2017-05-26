@@ -1,5 +1,7 @@
 package com.example.administrator.os_china.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.administrator.os_china.App;
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
 import com.example.administrator.os_china.model.entity.my_beans.Login_Beans;
@@ -46,6 +49,9 @@ public class Login_Activity extends BaseActivity {
 
     private INewsModel iNewsModel;
 
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected int getLayoutId() {
         return R.layout.login_activity_item;
@@ -55,6 +61,9 @@ public class Login_Activity extends BaseActivity {
     protected void initData() {
 
         iNewsModel = new NewsMineImpl();
+
+        preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+        editor = preferences.edit();
     }
 
     @Override
@@ -69,7 +78,12 @@ public class Login_Activity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        loginImgBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -84,6 +98,8 @@ public class Login_Activity extends BaseActivity {
         switch (view.getId()) {
             case R.id.login_img_bt:
 
+                onBackPressed();
+
                 break;
             case R.id.wangji:
 
@@ -93,7 +109,7 @@ public class Login_Activity extends BaseActivity {
                 username = edLogin.getText().toString().trim();
                 password = edZuche.getText().toString().trim();
 
-                if(username == "" && password==""){
+                if(username == null && password==null){
                     Toast.makeText(this, "用户名或者密码不能为空", Toast.LENGTH_SHORT).show();
                 }else{
                     iNewsModel.login(username, password, new MyCallBack() {
@@ -105,6 +121,18 @@ public class Login_Activity extends BaseActivity {
                             xStream.alias("oschina", Login_Beans.class);
 
                             Login_Beans beans = (Login_Beans) xStream.fromXML(result);
+
+                            String uid = beans.getUser().getUid();
+                            String name = beans.getUser().getName();
+                            String portrait = beans.getUser().getPortrait();
+
+                            editor.putString("uid",uid);
+                            editor.putString("name",name);
+                            editor.putString("img",portrait);
+
+                            editor.commit();
+
+
                             String errorMessage = beans.getResult().getErrorMessage();
                             if(errorMessage.equals("登录成功")){
                                 Toast.makeText(Login_Activity.this, "登陆成功", Toast.LENGTH_SHORT).show();

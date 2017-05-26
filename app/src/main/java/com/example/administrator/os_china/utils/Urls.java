@@ -101,5 +101,8 @@ public class Urls {
     //登录
     public static final String LOGIN = BASEUSER + "action/api/login_validate";
 
+    //发表动弹
+    public static final String FABIAO_DT = BASEUSER + "action/api/tweet_pub";
+
 
 }

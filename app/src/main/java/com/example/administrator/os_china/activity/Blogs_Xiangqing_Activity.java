@@ -19,6 +19,7 @@ import com.thoughtworks.xstream.XStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/5/17 0017.

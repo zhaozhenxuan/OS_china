@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.model.entity.synthetical_beans.Beans;
+import com.example.administrator.os_china.utils.Dates;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,15 +52,21 @@ public class MyMessageAdapter extends BaseAdapter {
             holder.tv_message_a = (TextView) convertView.findViewById(R.id.tv_message_a);
             holder.tv_message_b = (TextView) convertView.findViewById(R.id.tv_message_b);
             holder.tv_message_c = (TextView) convertView.findViewById(R.id.tv_message_c);
+            holder.message_time = (TextView) convertView.findViewById(R.id.message_time);
+            holder.message_number = (TextView) convertView.findViewById(R.id.message_number);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
         Beans.NewsBean beans = list.get(position);
+        String attachment = beans.getCommentCount();
+        String date = Dates.getDate(beans.getPubDate());
 
         holder.tv_message_a.setText(beans.getTitle());
         holder.tv_message_b.setText(beans.getBody());
         holder.tv_message_c.setText("@"+beans.getAuthor());
+        holder.message_number.setText(attachment);
+        holder.message_time.setText(date);
 
         return convertView;
     }
@@ -67,5 +75,7 @@ public class MyMessageAdapter extends BaseAdapter {
         private TextView tv_message_a;
         private TextView tv_message_b;
         private TextView tv_message_c;
+        private TextView message_time;
+        private TextView message_number;
     }
 }

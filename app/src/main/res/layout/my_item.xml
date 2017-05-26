@@ -36,6 +36,7 @@
             android:layout_height="80dp" />
 
         <TextView
+            android:id="@+id/username"
             android:textSize="15dp"
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"

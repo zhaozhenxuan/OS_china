@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#24CF5F">
+
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/img_btn_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"/>
+
+        <TextView
+            android:id="@+id/xiangqing_tv"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:layout_toRightOf="@id/img_btn_setting"
+            android:layout_marginLeft="44dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/setting"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注销"/>
+    </RelativeLayout>
+</LinearLayout>

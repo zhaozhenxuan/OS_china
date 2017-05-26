@@ -205,6 +205,13 @@ public class HUODONG_Activity extends BaseActivity {
             }
         });
 
+        imgBtnHuodong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
     }
 
     @Override

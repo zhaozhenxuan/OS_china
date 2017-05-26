@@ -1,15 +1,23 @@
 package com.example.administrator.os_china.fragment.home_fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.administrator.os_china.App;
 import com.example.administrator.os_china.R;
+import com.example.administrator.os_china.activity.AllMain_Activity;
 import com.example.administrator.os_china.activity.Login_Activity;
+import com.example.administrator.os_china.activity.Setting_Activity;
 import com.example.administrator.os_china.base.BaseFragment;
 
 import butterknife.BindView;
@@ -49,6 +57,11 @@ public class My_fragment extends BaseFragment {
     @BindView(R.id.WDTD)
     RelativeLayout WDTD;
     Unbinder unbinder;
+    @BindView(R.id.username)
+    TextView username;
+
+    private SharedPreferences preferences;
+    private String cookie;
 
     @Override
     public int getLayoutId() {
@@ -62,6 +75,15 @@ public class My_fragment extends BaseFragment {
 
     @Override
     public void initData() {
+
+        SharedPreferences preferences=App.activity.getSharedPreferences("user", Context.MODE_PRIVATE);
+        String name = preferences.getString("name",null);
+        Log.e("name","name :" +name);
+        if(name == null){
+            username.setText("点击头像登录");
+        }else{
+            username.setText(name);
+        }
 
     }
 
@@ -94,30 +116,82 @@ public class My_fragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.my_setting:
 
+                Intent intent1 = new Intent(getActivity(), Setting_Activity.class);
+                startActivity(intent1);
+
                 break;
             case R.id.btn_qrcode:
 
                 break;
             case R.id.image_login:
 
-                Intent intent = new Intent(getActivity() , Login_Activity.class);
-                startActivity(intent);
+                preferences = App.activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+                cookie = preferences.getString("cookie", null);
+                if (cookie == null) {
+                    Intent intent = new Intent(getActivity(), Login_Activity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "您已经登录成功", Toast.LENGTH_SHORT).show();
+                }
+
 
                 break;
             case R.id.WDXX:
+                preferences = App.activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+                cookie = preferences.getString("cookie", null);
+                if (cookie == null) {
+                    Intent intent = new Intent(getActivity(), Login_Activity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity() , AllMain_Activity.class);
+                    startActivity(intent);
+                }
+
 
                 break;
             case R.id.WDBK:
-
+                preferences = App.activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+                cookie = preferences.getString("cookie", null);
+                if (cookie == null) {
+                    Intent intent = new Intent(getActivity(), Login_Activity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity() , AllMain_Activity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.WDWD:
-
+                preferences = App.activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+                cookie = preferences.getString("cookie", null);
+                if (cookie == null) {
+                    Intent intent = new Intent(getActivity(), Login_Activity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity() , AllMain_Activity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.WDHD:
-
+                preferences = App.activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+                cookie = preferences.getString("cookie", null);
+                if (cookie == null) {
+                    Intent intent = new Intent(getActivity(), Login_Activity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity() , AllMain_Activity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.WDTD:
-
+                preferences = App.activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+                cookie = preferences.getString("cookie", null);
+                if (cookie == null) {
+                    Intent intent = new Intent(getActivity(), Login_Activity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity() , AllMain_Activity.class);
+                    startActivity(intent);
+                }
                 break;
         }
     }

@@ -2,6 +2,7 @@ package com.example.administrator.os_china.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -67,7 +68,12 @@ public class RJ_xiangqing_Activity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        imgBtnRJXiangqing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override

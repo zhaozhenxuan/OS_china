@@ -3,6 +3,7 @@ package com.example.administrator.os_china.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -85,7 +86,12 @@ public class HD_XiangQing_Activity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        imgBtnHd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override

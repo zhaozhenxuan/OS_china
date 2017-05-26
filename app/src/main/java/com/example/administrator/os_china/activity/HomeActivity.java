@@ -1,7 +1,9 @@
 package com.example.administrator.os_china.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Process;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
@@ -25,8 +27,6 @@ import com.example.administrator.os_china.utils.FragmentBuilder;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static android.R.attr.x;
 
 public class HomeActivity extends BaseActivity {
 
@@ -90,6 +90,18 @@ public class HomeActivity extends BaseActivity {
                 FragmentBuilder.getInstance().containerId(R.id.contentGroup).start(Trends_fragment.class).build();
                 break;
             case R.id.AddBtn:
+
+                SharedPreferences preferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+                String cookie=preferences.getString("cookie",null);
+
+                if(cookie == null){
+                    Intent intent = new Intent(HomeActivity.this , Login_Activity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(HomeActivity.this , Add_Activity.class);
+                    startActivity(intent);
+                }
+
                 break;
             case R.id.FaXianBtn:
                 FragmentBuilder.getInstance().containerId(R.id.contentGroup).start(Find_fragment.class).build();
