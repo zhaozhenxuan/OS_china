@@ -81,18 +81,20 @@ public class Add_Activity extends BaseActivity {
                 String uid = preferences.getString("uid",null);
                 String s = addContent.getText().toString();
 
-                iMain.TYT(uid, s, new MyCallBack() {
-                    @Override
-                    public void onSuccess(String result) {
-                        Log.e("TYT","返回的数据："+result);
-                        Toast.makeText(Add_Activity.this, "发表成功", Toast.LENGTH_SHORT).show();
-                    }
+                if (s != null){
+                    iMain.TYT(uid, s, new MyCallBack() {
+                        @Override
+                        public void onSuccess(String result) {
+                            Log.e("TYT","返回的数据："+result);
+                            Toast.makeText(Add_Activity.this, "发表成功", Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onError(String MsgError) {
+                        @Override
+                        public void onError(String MsgError) {
 
-                    }
-                });
+                        }
+                    });
+                }
                 addContent.setText("");
 
 

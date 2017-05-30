@@ -9,4 +9,6 @@ import com.example.administrator.os_china.model.http.callback.MyCallBack;
 public interface IMain {
 
     void TYT(String uid ,String msg, MyCallBack myCallBack);
+
+    void login(String username , String psw , MyCallBack myCallBack);
 }

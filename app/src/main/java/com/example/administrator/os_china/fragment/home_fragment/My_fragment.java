@@ -132,6 +132,8 @@ public class My_fragment extends BaseFragment {
                     startActivity(intent);
                 } else {
                     Toast.makeText(getActivity(), "您已经登录成功", Toast.LENGTH_SHORT).show();
+
+                    Log.e("COOKIE","登录成功的cookie : "+cookie);
                 }
 
 

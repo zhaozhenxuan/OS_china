@@ -28,7 +28,7 @@ public interface INewsModel {
 
     void HD_XiangQing(String Id , MyCallBack myCallBack);
 
-    void login(String username , String psw , MyCallBack myCallBack);
+
 
 
 

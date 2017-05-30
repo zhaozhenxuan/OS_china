@@ -15,6 +15,8 @@ import com.example.administrator.os_china.App;
 import com.example.administrator.os_china.R;
 import com.example.administrator.os_china.base.BaseActivity;
 import com.example.administrator.os_china.model.entity.my_beans.Login_Beans;
+import com.example.administrator.os_china.model.http.biz.message.Main.IMain;
+import com.example.administrator.os_china.model.http.biz.message.Main.MainImpl;
 import com.example.administrator.os_china.model.http.biz.message.news.INewsModel;
 import com.example.administrator.os_china.model.http.biz.message.news.NewsMineImpl;
 import com.example.administrator.os_china.model.http.callback.MyCallBack;
@@ -47,7 +49,7 @@ public class Login_Activity extends BaseActivity {
     private String username;
     private String password;
 
-    private INewsModel iNewsModel;
+    private IMain iMain;
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -60,7 +62,7 @@ public class Login_Activity extends BaseActivity {
     @Override
     protected void initData() {
 
-        iNewsModel = new NewsMineImpl();
+        iMain = new MainImpl();
 
         preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
         editor = preferences.edit();
@@ -109,45 +111,53 @@ public class Login_Activity extends BaseActivity {
                 username = edLogin.getText().toString().trim();
                 password = edZuche.getText().toString().trim();
 
-                if(username == null && password==null){
+                if (username.equals("")) {
                     Toast.makeText(this, "用户名或者密码不能为空", Toast.LENGTH_SHORT).show();
-                }else{
-                    iNewsModel.login(username, password, new MyCallBack() {
-                        @Override
-                        public void onSuccess(String result) {
-                            Log.w("LOGIN","打印："+result);
+                } else {
+                    if (password.equals("")) {
+                        Toast.makeText(this, "用户名或者密码不能为空", Toast.LENGTH_SHORT).show();
+                    } else {
+                        iMain.login(username, password, new MyCallBack() {
+                            @Override
+                            public void onSuccess(String result) {
+                                Log.w("LOGIN", "打印：" + result);
 
-                            XStream xStream = new XStream();
-                            xStream.alias("oschina", Login_Beans.class);
+                                XStream xStream = new XStream();
+                                xStream.alias("oschina", Login_Beans.class);
 
-                            Login_Beans beans = (Login_Beans) xStream.fromXML(result);
+                                Login_Beans beans = (Login_Beans) xStream.fromXML(result);
 
-                            String uid = beans.getUser().getUid();
-                            String name = beans.getUser().getName();
-                            String portrait = beans.getUser().getPortrait();
+                                String errorCode = beans.getResult().getErrorCode();
+                                if ("1".equals(errorCode)) {
+                                    Toast.makeText(Login_Activity.this, "登陆成功", Toast.LENGTH_SHORT).show();
 
-                            editor.putString("uid",uid);
-                            editor.putString("name",name);
-                            editor.putString("img",portrait);
+                                    String uid = beans.getUser().getUid();
+                                    String name = beans.getUser().getName();
+                                    String portrait = beans.getUser().getPortrait();
 
-                            editor.commit();
+                                    editor.putString("uid", uid);
+                                    editor.putString("name", name);
+                                    editor.putString("img", portrait);
+
+                                    editor.commit();
+
+                                    finish();
+                                } else {
+                                    Toast.makeText(Login_Activity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                                }
 
 
-                            String errorMessage = beans.getResult().getErrorMessage();
-                            if(errorMessage.equals("登录成功")){
-                                Toast.makeText(Login_Activity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }else{
-                                Toast.makeText(Login_Activity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+
+
+
                             }
 
-                        }
+                            @Override
+                            public void onError(String MsgError) {
 
-                        @Override
-                        public void onError(String MsgError) {
-
-                        }
-                    });
+                            }
+                        });
+                    }
                 }
 
                 break;

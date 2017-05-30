@@ -139,19 +139,5 @@ public class NewsMineImpl implements INewsModel {
 
     }
 
-    /**
-     * 登录
-     * @param username
-     * @param psw
-     * @param myCallBack
-     */
-    @Override
-    public void login(String username, String psw,  MyCallBack myCallBack) {
-        Map<String, String> pramass = new HashMap<>();
-        pramass.put("username", username);
-        pramass.put("pwd", psw);
-        pramass.put("keep_login", "1");
 
-        OkhttpUtils.getOkhttpUtils().doPost(Urls.LOGIN , pramass , myCallBack);
-    }
 }
